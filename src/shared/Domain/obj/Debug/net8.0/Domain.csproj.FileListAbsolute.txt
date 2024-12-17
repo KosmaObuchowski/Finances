@@ -1,0 +1,12 @@
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\bin\Debug\net8.0\Domain.dll
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\bin\Debug\net8.0\Domain.pdb
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\Domain.dll
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\Domain.pdb
+D:\VisualStudioFiles\repos\Finances\src\shared\Domain\obj\Debug\net8.0\ref\Domain.dll

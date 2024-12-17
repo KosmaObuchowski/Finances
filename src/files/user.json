@@ -1,0 +1,122 @@
+[
+  {
+    "UserId": 1,
+    "UserGovtId": 123456789,
+    "UserLogin": "jdoe",
+    "Name": "John",
+    "LastName": "Doe",
+    "DOB": "1990-01-15",
+    "Status": "Active",
+    "Password": "123"
+  },
+  {
+    "UserId": 2,
+    "UserGovtId": 987654321,
+    "UserLogin": "asmith",
+    "Name": "Alice",
+    "LastName": "Smith",
+    "DOB": "1985-05-20",
+    "Status": "Active",
+    "Password": "alice!2020"
+  },
+  {
+    "UserId": 3,
+    "UserGovtId": 555555555,
+    "UserLogin": "mjohnson",
+    "Name": "Michael",
+    "LastName": "Johnson",
+    "DOB": "1993-07-12",
+    "Status": "Active",
+    "Password": "michael*pass"
+  },
+  {
+    "UserId": 4,
+    "UserGovtId": 333333333,
+    "UserLogin": "klee",
+    "Name": "Karen",
+    "LastName": "Lee",
+    "DOB": "1978-02-25",
+    "Status": "Active",
+    "Password": "karen_lee78"
+  },
+  {
+    "UserId": 5,
+    "UserGovtId": 222222222,
+    "UserLogin": "bwhite",
+    "Name": "Brian",
+    "LastName": "White",
+    "DOB": "2000-10-08",
+    "Status": "Active",
+    "Password": "secure12345"
+  },
+  {
+    "UserId": 6,
+    "UserGovtId": 444444444,
+    "UserLogin": "jkim",
+    "Name": "Jessica",
+    "LastName": "Kim",
+    "DOB": "1992-03-11",
+    "Status": "Active",
+    "Password": "jessica2021!"
+  },
+  {
+    "UserId": 7,
+    "UserGovtId": 666666666,
+    "UserLogin": "rpatel",
+    "Name": "Raj",
+    "LastName": "Patel",
+    "DOB": "1988-09-14",
+    "Status": "Active",
+    "Password": "raj@patel88"
+  },
+  {
+    "UserId": 8,
+    "UserGovtId": 777777777,
+    "UserLogin": "cmartinez",
+    "Name": "Carlos",
+    "LastName": "Martinez",
+    "DOB": "1975-12-05",
+    "Status": "Active",
+    "Password": "carlos75*"
+  },
+  {
+    "UserId": 9,
+    "UserGovtId": 888888888,
+    "UserLogin": "lliu",
+    "Name": "Linda",
+    "LastName": "Liu",
+    "DOB": "1996-08-22",
+    "Status": "Active",
+    "Password": "lindal96pass"
+  },
+  {
+    "UserId": 10,
+    "UserGovtId": 999999999,
+    "UserLogin": "jwilson",
+    "Name": "James",
+    "LastName": "Wilson",
+    "DOB": "1983-11-30",
+    "Status": "Active",
+    "Password": "wilson1983"
+  },
+  {
+    "UserId": 11,
+    "UserGovtId": 12312312311,
+    "UserLogin": "test",
+    "Name": "Testing",
+    "LastName": "Testing123",
+    "DOB": "2000-01-01",
+    "Status": "Active",
+    "Password": "123"
+  },
+  {
+    "UserId": 12,
+    "UserGovtId": 12312312311,
+    "UserLogin": "test",
+    "Name": "k",
+    "LastName": "k",
+    "DOB": "2000-01-01",
+    "Status": "Active",
+    "Password": "123"
+  }
+]
