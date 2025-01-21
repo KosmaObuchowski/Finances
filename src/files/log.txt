@@ -1,0 +1,6 @@
+==LOG==
+User John Doe has been successfully logged out at 21.01.2025 15:40:05.
+User John Doe has been successfully logged out at 21.01.2025 15:57:27.
+User John Doe has been successfully logged out at 21.01.2025 15:59:24.
+21.01.2025 17:03:22 User Alice Smith has been successfully logged out.
+21.01.2025 17:03:56 User John Doe has been successfully logged out.

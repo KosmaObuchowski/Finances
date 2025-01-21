@@ -26,7 +26,8 @@ class Program
         Console.WriteLine("2. Withdraw");
         Console.WriteLine("3. Deposit");
         Console.WriteLine("4. Check Personal Information");
-        Console.WriteLine("5. Logout");
+        Console.WriteLine("5. Display log file");
+        Console.WriteLine("6. Logout");
 
         Console.WriteLine("Selection: ");
     }
@@ -42,7 +43,6 @@ class Program
 
         Console.WriteLine("Log in or sign up to the banking system: 1. Log in, 2. Sign up.");
 
-        //Account currentAccount = new Account();
         User user = new User();
 
         bool logout = false;
@@ -69,7 +69,6 @@ class Program
                     Console.ReadKey();
 
                     logout = true;
-                    //return;
                 }
             }
             catch (FormatException)
@@ -89,7 +88,7 @@ class Program
             {
                 int option = Convert.ToInt32(Console.ReadLine());
 
-                if (option <= 0 || option > 5)
+                if (option <= 0 || option > 6)
                 {
                     correction.Correction();
                 }
@@ -121,11 +120,37 @@ class Program
                             Console.ReadKey();
                             break;
                         case 5:
+                            if (currentUser.UserGovtId == 12345678911)
+                            {
+                                string path = @"../../../../files/log.txt";
+
+                                if (File.Exists(path))
+                                {
+                                    string[] lines = File.ReadAllLines(path);
+                                    foreach (string line in lines)
+                                    {
+                                        Console.WriteLine(line);
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("File does not exist.");
+                                }
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Unathorized access.");
+                            }
+                            Console.WriteLine("Press any key to continue... ");
+                            Console.ReadKey();
+                            break;
+                        case 6:
                             Console.Clear();
                             Console.WriteLine($"User {currentUser.Name} {currentUser.LastName} has been successfully logged out.");
                             logout = true;
-                            System.Threading.Thread.Sleep(3000);
-                            return;
+                            System.Threading.Thread.Sleep(2222);
+                            break;
                     }
                 }
             }
@@ -135,6 +160,9 @@ class Program
             }
 
         }
+
+        string filePath = @"../../../../files/log.txt";
+        File.AppendAllText(filePath, $"\n{DateTime.Now} User {currentUser.Name} {currentUser.LastName} has been successfully logged out.");
     }
 }
 
@@ -142,6 +170,6 @@ class Program
 // fix json path - files folder in the same dir as src [DONE]
 // add finances to account [DONE]
 // create new account [DONE]
-// colored info for incorrect login and pass
+// colored info for incorrect login and pass [DONE]
 // add passcode / PIN? [DISCARDED]
-// add separate log file
+// add separate log file [DONE]

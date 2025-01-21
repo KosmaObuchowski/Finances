@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Xml.Linq;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Domain.Entities
 {
@@ -34,18 +35,13 @@ namespace Domain.Entities
                 PropertyNameCaseInsensitive = true
             };
 
-            //string userJson = File.ReadAllText(@"./user.json");
             string userJson = File.ReadAllText(@"../../../../files/user.json");
             List<User> user = JsonSerializer.Deserialize<List<User>>(userJson, options);
-            //Console.WriteLine($"TEST Name: {user[0].Name} TEST");
-
-            //var path = Directory.GetCurrentDirectory();
-            //Console.WriteLine(path);
 
             if (user == null)
             {
-                Console.WriteLine("User does not exist.");
-                // method to create another bank account
+                Console.WriteLine("User does not exist. Would you like to create an account?");
+                CreateAccount();
             }
 
             Console.WriteLine("Login: ");
@@ -82,7 +78,6 @@ namespace Domain.Entities
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Provide a correct password, silly!");
-                //Login();
                 return Login();
             }
         }
@@ -128,7 +123,6 @@ namespace Domain.Entities
                 System.Threading.Thread.Sleep(1000);
                 Console.Clear();
                 return Withdraw(userAccount);
-                //return userAccount;
             }
 
             userAccount.Balance -= amount;
@@ -210,6 +204,13 @@ namespace Domain.Entities
             return userAccount;
         }
 
+        // uppercase name and lastname
+        public string Cap(string x)
+        {
+            return x.Substring(0, 1).ToUpper() + x.Substring(1).ToLower();
+        }
+
+        // new acc generation
         public (User, Account) CreateAccount()
         {
             var options = new JsonSerializerOptions
@@ -218,30 +219,76 @@ namespace Domain.Entities
                 WriteIndented = true
             };
 
-            Console.WriteLine("Creating a new account...");
+            // info prompt
+            Console.Clear();
+            Console.WriteLine("Preparing for new account creation...");
             System.Threading.Thread.Sleep(1000);
+            Console.Clear();
 
+            // user data input
             Console.WriteLine("Enter your first name:");
             string name = Console.ReadLine();
+            name = Cap(name);
             Console.WriteLine("Enter your last name:");
             string lastName = Console.ReadLine();
+            lastName = Cap(lastName);
             Console.WriteLine("Enter your government ID:");
+            Console.WriteLine(name + " " + lastName);
             long govtId;
-            while (!long.TryParse(Console.ReadLine(), out govtId))
+
+            // govId format checker
+            while (true)
             {
-                Console.WriteLine("Invalid input. Please enter a valid government ID:");
+                string input = Console.ReadLine();
+
+                if (long.TryParse(input, out govtId) && input.Length == 11)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Please enter a valid, 11 digit government ID: ");
             }
 
             Console.WriteLine("Enter your date of birth (YYYY-DD-MM):");
-            string dob = Console.ReadLine();
+            string dob;
+            DateTime correctDate;
 
-            Console.WriteLine("Enter your login:");
-            string login = Console.ReadLine();
+            // dob format checker
+            while(true)
+            {
+                dob = Console.ReadLine();
+
+                if (DateTime.TryParseExact(dob, "yyyy-dd-MM", null, System.Globalization.DateTimeStyles.None, out correctDate))
+                {
+                    break;
+                }
+
+                Console.WriteLine("Please enter the date in the correct format.");
+            }
+
+            string login;
+
+            while (true)
+            {
+                Console.WriteLine("Enter your login:");
+                login = Console.ReadLine();
+
+                // Load existing users
+                string userJson1 = File.Exists(@"../../../../files/user.json") ? File.ReadAllText(@"../../../../files/user.json") : "[]";
+                List<User> users1 = JsonSerializer.Deserialize<List<User>>(userJson1, options) ?? new List<User>();
+
+                if (!users1.Any(u => u.UserLogin == login))
+                {
+                    break; // Login is unique
+                }
+
+                Console.WriteLine("This login is already taken. Please choose a different one.");
+            }
 
             Console.WriteLine("Create a password:");
             string password = Console.ReadLine();
 
-            // Generate a unique UserId (based on the existing JSON file)
+            // generating a UserId
             string userJson = File.Exists(@"../../../../files/user.json") ? File.ReadAllText(@"../../../../files/user.json") : "[]";
             List<User> users = JsonSerializer.Deserialize<List<User>>(userJson, options) ?? new List<User>();
             int newUserId = users.Any() ? users.Max(u => u.UserId) + 1 : 1;
@@ -262,7 +309,7 @@ namespace Domain.Entities
             string updatedUserJson = JsonSerializer.Serialize(users, options);
             File.WriteAllText(@"../../../../files/user.json", updatedUserJson);
 
-            // Generate a unique Account ID
+            // generating acc ID
             string accountJson = File.Exists(@"../../../../files/account.json") ? File.ReadAllText(@"../../../../files/account.json") : "[]";
             List<Account> accounts = JsonSerializer.Deserialize<List<Account>>(accountJson, options) ?? new List<Account>();
             double newAccId = accounts.Any() ? accounts.Max(a => a.AccId) + 1 : 1000;
@@ -272,10 +319,10 @@ namespace Domain.Entities
                 AccId = newAccId,
                 AccStatus = "Active",
                 Balance = 0,
-                UserId = newUser.UserId // Link the account to the user
+                UserId = newUser.UserId
             };
 
-            // Add the new account to the list and save it to the JSON file
+            // add new acc
             accounts.Add(newAccount);
             string updatedAccountJson = JsonSerializer.Serialize(accounts, options);
             File.WriteAllText(@"../../../../files/account.json", updatedAccountJson);
@@ -302,5 +349,8 @@ namespace Domain.Entities
             Status = status;
             Password = password;
         }
+
+        //var path = Directory.GetCurrentDirectory();
+        //Console.WriteLine(path);
     }
 }

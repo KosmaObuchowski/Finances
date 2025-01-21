@@ -5,7 +5,6 @@
         public double AccId { get; set; }
         public string? AccStatus { get; set; }
         public long? Balance { get; set; }
-        //public string? Balance { get; set; }
 
 
         public Account()
