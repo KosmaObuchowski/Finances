@@ -336,7 +336,6 @@ namespace Domain.Entities
         }
 
 
-
         // for testing purposes
         public User(int userId, long userGovtId, string userlogin, string name, string lastName, string dob, string status, string password)
         {
@@ -349,8 +348,5 @@ namespace Domain.Entities
             Status = status;
             Password = password;
         }
-
-        //var path = Directory.GetCurrentDirectory();
-        //Console.WriteLine(path);
     }
 }
