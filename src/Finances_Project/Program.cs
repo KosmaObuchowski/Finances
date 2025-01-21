@@ -165,11 +165,3 @@ class Program
         File.AppendAllText(filePath, $"\n{DateTime.Now} User {currentUser.Name} {currentUser.LastName} has been successfully logged out.");
     }
 }
-
-// check whether user exists [DONE]
-// fix json path - files folder in the same dir as src [DONE]
-// add finances to account [DONE]
-// create new account [DONE]
-// colored info for incorrect login and pass [DONE]
-// add passcode / PIN? [DISCARDED]
-// add separate log file [DONE]
